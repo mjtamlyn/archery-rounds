@@ -18,8 +18,8 @@ Python library providing definitions of archery rounds.
 ...     <Subround: 36 arrows shot in 3s at 50m on a 80cm face>,
 ...     <Subround: 36 arrows shot in 3s at 30m on a 80cm face>,
 ... ]
->>> wa_1440_90.subrounds[0].face_type
-... <Face: 122cm 10 zone WA target face>
+>>> wa_1440_90.subrounds[0].target_type
+... <Target: 122cm 10 zone WA target face>
 >>> wa_1440_90.variants
 ... {
 ...     'shot-in-6s': <RoundVariant: 6 arrow ends at 50m and 30m>,
