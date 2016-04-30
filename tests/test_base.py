@@ -17,6 +17,13 @@ class TestSubround(TestCase):
         two = Subround(arrows=60, per_end=3, distance=20, unit='yards', target_type=target_type)
         self.assertEqual(one, two)
 
+    def test_comparable(self):
+        target_type = TargetType('60cm 10 zone')
+        one = Subround(arrows=60, per_end=3, distance=20, unit='yards', target_type=target_type)
+        two = Subround(arrows=30, per_end=6, distance=20, unit='yards', target_type=target_type)
+        self.assertTrue(one.is_comparable(two))
+        self.assertTrue(two.is_comparable(one))
+
 
 class TestRound(TestCase):
     def test_names(self):
@@ -42,3 +49,11 @@ class TestRound(TestCase):
         hereford = Round('Hereford', subrounds=[eighty, sixty, fifty], scoring_type='AGB imperial outdoor')
         bristol = Round('Bristol I', subrounds=[eighty, sixty, fifty], scoring_type='AGB imperial outdoor')
         self.assertEqual(hereford, bristol)
+
+    def test_equality_normalization_needed(self):
+        target_type = TargetType('60cm 10 zone')
+        full = Subround(arrows=60, per_end=3, distance=20, unit='yards', target_type=target_type)
+        half = Subround(arrows=30, per_end=3, distance=20, unit='yards', target_type=target_type)
+        portsmouth = Round('Portsmouth', subrounds=[full], scoring_type='AGB Indoor')
+        wallingford = Round('2x20y', subrounds=[half, half], scoring_type='AGB Indoor')
+        self.assertEqual(portsmouth, wallingford)
