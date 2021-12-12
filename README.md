@@ -11,14 +11,14 @@ Python library providing definitions of archery rounds.
 ... <Scoring: WA Outdoors (Xs, 10+X)>
 >>> wa_1440_90.arrows
 ... 144
->>> wa_1440_90.subrounds
+>>> wa_1440_90.passes
 ... [
-...     <Subround: 36 arrows shot in 6s at 90m on a 122cm face>,
-...     <Subround: 36 arrows shot in 6s at 70m on a 122cm face>,
-...     <Subround: 36 arrows shot in 3s at 50m on a 80cm face>,
-...     <Subround: 36 arrows shot in 3s at 30m on a 80cm face>,
+...     <Pass: 36 arrows shot in 6s at 90m on a 122cm face>,
+...     <Pass: 36 arrows shot in 6s at 70m on a 122cm face>,
+...     <Pass: 36 arrows shot in 3s at 50m on a 80cm face>,
+...     <Pass: 36 arrows shot in 3s at 30m on a 80cm face>,
 ... ]
->>> wa_1440_90.subrounds[0].target_type
+>>> wa_1440_90.passes[0].target_type
 ... <Target: 122cm 10 zone WA target face>
 >>> wa_1440_90.variants
 ... {

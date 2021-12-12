@@ -12,7 +12,7 @@ class TargetType(object):
 
 
 @attr.s
-class Subround(object):
+class Pass(object):
     arrows = attr.ib(type=int)
     per_end = attr.ib(type=int)
     distance = attr.ib(type=int)
@@ -26,7 +26,7 @@ class Subround(object):
 
     def is_comparable(self, other):
         return (
-            isinstance(other, Subround)
+            isinstance(other, Pass)
             and self.distance == other.distance
             and self.unit == other.unit
             # TODO: this line needs to be one category higher, or we need face types within target_type
@@ -36,12 +36,12 @@ class Subround(object):
         )
 
 
-def normalize_subrounds(subrounds):
-    """Collate subrounds with only one subround per setup."""
+def normalize_passes(passes):
+    """Collate passes with only one pass per setup."""
     # TODO: Also normalise distance order?
     normalized = []
     current = None
-    for sr in subrounds:
+    for sr in passes:
         if current is None or not current.is_comparable(sr):
             normalized.append(copy.copy(sr))
         else:
@@ -53,7 +53,7 @@ def normalize_subrounds(subrounds):
 @attr.s
 class Round(object):
     name = attr.ib(type=str, eq=False)
-    subrounds = attr.ib(eq=normalize_subrounds)
+    passes = attr.ib(eq=normalize_passes)
     scoring_type = attr.ib()
 
     def __str__(self):
