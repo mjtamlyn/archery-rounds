@@ -9,7 +9,6 @@ class TestSubround(TestCase):
         subround = Subround(arrows=60, per_end=3, distance=20, unit='yards', target_type=target_type)
         description = '60 arrows shot in 3s at 20 yards, 60cm 10 zone'
         self.assertEqual(str(subround), description)
-        self.assertEqual(repr(subround), '<Subround: {}>'.format(description))
 
     def test_equality(self):
         target_type = TargetType('60cm 10 zone')
@@ -32,7 +31,6 @@ class TestRound(TestCase):
         name = 'Portsmouth'
         portsmouth = Round(name, subrounds=[subround], scoring_type='AGB Indoor')
         self.assertEqual(str(portsmouth), name)
-        self.assertEqual(repr(portsmouth), '<Round: {}>'.format(name))
 
     def test_equality_simple(self):
         target_type = TargetType('60cm 10 zone')
