@@ -9,7 +9,7 @@ class TargetType(object):
         return self.name
 
     def __repr__(self):
-        return '<Target: {}>'.format(self.name)
+        return "<Target: {}>".format(self.name)
 
 
 class Subround(object):
@@ -23,10 +23,12 @@ class Subround(object):
         self.target_type = target_type
 
     def __str__(self):
-        return '{arrows} arrows shot in {per_end}s at {distance} {unit}, {target_type}'.format(**self.__dict__)
+        return "{arrows} arrows shot in {per_end}s at {distance} {unit}, {target_type}".format(
+            **self.__dict__
+        )
 
     def __repr__(self):
-        return '<Subround: {}>'.format(str(self))
+        return "<Subround: {}>".format(str(self))
 
     def __eq__(self, other):
         return (
@@ -63,7 +65,7 @@ class Round(object):
         return self.name
 
     def __repr__(self):
-        return '<Round: {}>'.format(self.name)
+        return "<Round: {}>".format(self.name)
 
     def __eq__(self, other):
         """Two rounds are equal if they involve the same number of arrows, at the same faces, with the same rules."""
@@ -71,10 +73,7 @@ class Round(object):
             return False
         subrounds = self.normalized_subrounds()
         other_subrounds = other.normalized_subrounds()
-        return (
-            self.scoring_type == other.scoring_type
-            and subrounds == other_subrounds
-        )
+        return self.scoring_type == other.scoring_type and subrounds == other_subrounds
 
     def normalized_subrounds(self):
         """Collate subrounds with only one subround per setup."""
