@@ -6,6 +6,8 @@ name = "pypi"
 [packages]
 attrs = "*"
 black = "*"
+pint = "*"
+isort = "*"
 
 [dev-packages]
 
